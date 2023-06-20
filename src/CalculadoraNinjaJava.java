@@ -1,41 +1,27 @@
-import java.util.Scanner;
-
 public class CalculadoraNinjaJava {
     public static void main(String[] args) {
+        CalculadoraModel model = new CalculadoraModel();
+        CalculadoraView view = new CalculadoraView();
 
-        Scanner entrada = new Scanner(System.in);
+        double n1 = view.lerNumero();
+        double n2 = view.lerNumero();
 
-            System.out.println("Informe os valores: ");
-            double n1 = entrada.nextInt();
-            double n2 = entrada.nextInt();
+        String operacao = view.lerOperacao();
 
-        Calculadora calculator = new Calculadora(n1,n2);
+        double resultado = 0.0;
 
-
-        System.out.println("Escolha a operação: (adicao, subtracao, multiplicacao e divisao) ");
-            String operacao = entrada.next();
-
-            double resultado;
-
-            if (operacao.equals("adicao")) {
-                resultado = calculator.adicao();
-                System.out.println("Resultado: " + resultado);
-
-            } else if (operacao.equals("subtracao")) {
-                resultado = calculator.subtracao();
-                System.out.println("Resultado: " + resultado);
-
-            } else if (operacao.equals("multiplicacao")) {
-                resultado = calculator.multiplicacao();
-                System.out.println("Resultado: " + resultado);
-
-            } else if (operacao.equals("divisao")) {
-                resultado = calculator.divisao();
-                System.out.println("Resultado: " + resultado);
-
-            } else {
-                System.out.println("Operação invalida");
-            }
-
+        if (operacao.equals("adicao")) {
+            resultado = model.adicao(n1, n2);
+        } else if (operacao.equals("subtracao")) {
+            resultado = model.subtracao(n1, n2);
+        } else if (operacao.equals("multiplicacao")) {
+            resultado = model.multiplicacao(n1, n2);
+        } else if (operacao.equals("divisao")) {
+            resultado = model.divisao(n1, n2);
+        } else {
+            view.exibirMensagem("Operação inválida");
+            return;
+        }
+        view.exibirResultado(resultado);
     }
 }
