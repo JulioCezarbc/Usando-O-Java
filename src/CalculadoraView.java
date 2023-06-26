@@ -1,6 +1,6 @@
 import java.util.Scanner;
 public class CalculadoraView {
-    private Scanner scanner;
+    private final Scanner scanner;
     public CalculadoraView() {
         scanner = new Scanner(System.in);
     }
@@ -11,7 +11,7 @@ public class CalculadoraView {
     }
 
     public String lerOperacao() {
-        System.out.print("Escolha a operação (adicao, subtracao, multiplicacao, divisao): ");
+        System.out.print("Escolha a operação (adicao, subtracao, multiplicacao, divisao, potencia): ");
         return scanner.next();
     }
 

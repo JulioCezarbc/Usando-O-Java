@@ -19,4 +19,7 @@ public class CalculadoraModel {
             return 0;
         }
     }
+    public double potencia (double n1, double n2){
+        return Math.pow(n1,n2);
+    }
 }

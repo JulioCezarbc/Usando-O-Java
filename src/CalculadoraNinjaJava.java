@@ -8,19 +8,18 @@ public class CalculadoraNinjaJava {
 
         String operacao = view.lerOperacao();
 
-        double resultado = 0.0;
+        double resultado;
 
-        if (operacao.equals("adicao")) {
-            resultado = model.adicao(n1, n2);
-        } else if (operacao.equals("subtracao")) {
-            resultado = model.subtracao(n1, n2);
-        } else if (operacao.equals("multiplicacao")) {
-            resultado = model.multiplicacao(n1, n2);
-        } else if (operacao.equals("divisao")) {
-            resultado = model.divisao(n1, n2);
-        } else {
-            view.exibirMensagem("Operação inválida");
-            return;
+        switch (operacao) {
+            case "adicao" -> resultado = model.adicao(n1, n2);
+            case "subtracao" -> resultado = model.subtracao(n1, n2);
+            case "multiplicacao" -> resultado = model.multiplicacao(n1, n2);
+            case "divisao" -> resultado = model.divisao(n1, n2);
+            case "potencia" -> resultado = model.potencia(n1, n2);
+            default -> {
+                view.exibirMensagem("Operação inválida");
+                return;
+            }
         }
         view.exibirResultado(resultado);
     }
